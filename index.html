@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Sara 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(135deg,#ff758c,#ff7eb3);
+  overflow:hidden;
+  text-align:center;
+  color:white;
+}
+
+/* Fundo com brilho suave */
+body::before{
+  content:"";
+  position:absolute;
+  width:200%;
+  height:200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 10%, transparent 10%);
+  background-size:50px 50px;
+  animation: brilho 15s linear infinite;
+  opacity:0.3;
+}
+
+@keyframes brilho{
+  from{transform:translate(0,0);}
+  to{transform:translate(-50px,-50px);}
+}
+
+.container{
+  position:relative;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  padding:45px;
+  border-radius:25px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.25);
+  max-width:520px;
+  animation: aparecer 2s ease-in-out;
+  z-index:2;
+}
+
+h1{
+  font-family:'Dancing Script', cursive;
+  font-size:45px;
+  margin-bottom:20px;
+}
+
+p{
+  font-size:18px;
+  margin-bottom:25px;
+  line-height:1.6;
+}
+
+button{
+  padding:12px 28px;
+  border:none;
+  border-radius:30px;
+  background:white;
+  color:#ff4f81;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+  font-size:16px;
+}
+
+button:hover{
+  transform:scale(1.1);
+  background:#ffe3ea;
+}
+
+.mensagem{
+  margin-top:20px;
+  display:none;
+  font-size:19px;
+  animation: aparecer 2s ease-in-out;
+}
+
+@keyframes aparecer{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* Corações */
+.heart{
+  position:absolute;
+  color:white;
+  animation: subir 6s linear infinite;
+}
+
+@keyframes subir{
+  from{
+    transform:translateY(100vh);
+    opacity:1;
+  }
+  to{
+    transform:translateY(-10vh);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Sara 💕</h1>
+  <p>
+    Desde que você entrou na minha vida,  
+    tudo começou a ter mais cor, mais luz e mais sentido.
+  </p>
+
+  <button onclick="mostrar()">Abrir Meu Coração 💌</button>
+
+  <div class="mensagem" id="mensagem">
+    Sara, eu gosto muito de você ❤️  
+    Seu sorriso é o meu detalhe favorito no mundo.  
+    Eu só queria que você soubesse o quanto é especial pra mim. ✨
+  </div>
+</div>
+
+<script>
+function mostrar(){
+  document.getElementById("mensagem").style.display="block";
+}
+
+/* Criar corações flutuando */
+function criarCoracao(){
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML="❤️";
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.fontSize = (Math.random()*25+10) + "px";
+  heart.style.animationDuration = (Math.random()*3+3) + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(()=>{
+    heart.remove();
+  },6000);
+}
+
+setInterval(criarCoracao,300);
+</script>
+
+</body>
+</html>
